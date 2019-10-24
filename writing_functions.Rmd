@@ -87,7 +87,7 @@ sim_regression(n = 30)
 ```
 
 ```{r}
-sim_regression <- function(n, beta0, beta1){
+sim_regression <- function(n, beta0 = 2, beta1 = 3){
 
 sim_data = tibble(
   x = rnorm(30, mean = 1, sd = 1),
@@ -104,5 +104,12 @@ sim_data = tibble(
 }
 
 sim_regression(n = 3000, beta0 = 17, beta1 = -3)
+sim_regression(3000, 2, 3)
+
+```
+
+## Scrape napolean
+```{r}
+
 ```
 
