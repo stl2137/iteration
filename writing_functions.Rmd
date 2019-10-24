@@ -27,6 +27,12 @@ Here's the function
 ```{r}
 z_score <- function(x) {
   
+  if (!is.numeric(x)) {
+    stop("x should be numeric")
+  } else if (length(x) < 3) {
+    stop("x should be longer than 3")
+  }
+  
   (x - mean(x)) / sd(x)
 }
 ```
@@ -34,5 +40,29 @@ z_score <- function(x) {
 Try out the function
 ```{r}
 z_score(x = x_again)
+
+z_score(x = iris)
 ```
 
+## Multiple outputs
+```{r}
+mean_and_sd <- function(input_x) {
+  
+    if (!is.numeric(input_x)) {
+    stop("x should be numeric")
+  } else if (length(input_x) < 3) {
+    stop("x should be longer than 3")
+  }
+  
+  tibble(
+  mean_input = mean(input_x),
+  sd_input = sd(input_x)
+  )
+}
+```
+
+```{r}
+mean_and_sd(input_x = x)
+```
+
+## Multiple inputs
