@@ -1,0 +1,38 @@
+---
+title: "Writing Functions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(rvest)
+```
+
+## Let's start
+
+we're going to write some function
+
+Z-scores
+```{r}
+x = rnorm(n = 30, mean = 4, sd = 2.3)
+x_again = rnorm(n = 30, mean = 6, sd = 0.3)
+
+(x - mean(x))/sd(x)
+(x_again - mean(x_again)) / sd(x_again)
+```
+
+Here's the function
+```{r}
+z_score <- function(x) {
+  
+  (x - mean(x)) / sd(x)
+}
+```
+
+Try out the function
+```{r}
+z_score(x = x_again)
+```
+
