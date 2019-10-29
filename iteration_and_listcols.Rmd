@@ -5,6 +5,77 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+
+set.seed(1)
 ```
 
+```{r}
+l = list(vec_numeric = 5:8,
+         mat         = matrix(1:8, 2, 4),
+         vec_logical = c(TRUE, FALSE),
+         summary     = summary(rnorm(1000)))
+```
+
+```{r}
+l$vec_numeric
+
+l$summary
+
+l[[2]]
+
+mean(l$vec_numeric)
+```
+
+```{r}
+## on class website it's a tibble but for purposes of class, it's now a list
+df = list(
+  a = rnorm(20, 3, 1),
+  b = rnorm(20, 0, 5),
+  c = rnorm(20, 10, .2),
+  d = rnorm(20, -3, 1)
+)
+
+df$a
+```
+
+```{r}
+mean_and_sd <- function(input_x) {
+  
+    if (!is.numeric(input_x)) {
+    stop("x should be numeric")
+  } else if (length(input_x) < 3) {
+    stop("x should be longer than 3")
+  }
+  
+  tibble(
+  mean_input = mean(input_x),
+  sd_input = sd(input_x)
+  )
+}
+```
+
+```{r}
+mean_and_sd(df[[1]])
+mean_and_sd(df[[2]])
+mean_and_sd(df[[3]])
+mean_and_sd(df[[4]])
+```
+
+```{r}
+output <- vector("list", length = 4)
+```
+
+Write first for loop
+
+```{r}
+for (i in 1:4) {
+  
+  output[[i]] = mean_and_sd(df[[i]])
+  
+}
+
+output
+```
 
