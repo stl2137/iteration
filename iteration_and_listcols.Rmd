@@ -77,5 +77,20 @@ for (i in 1:4) {
 }
 
 output
+
+##running this gives us the same output as the for loop and printing out the output
+output <- map(df, mean_and_sd)
+
+output_median <- map(df, median)
+
+output_summary <- map(df, summary)
+output <- map_dfr(df, mean_and_sd)
+
+# explicitly saying what gets mapped
+output <- map(df, ~mean_and_sd(.x))
+```
+
+```{r}
+
 ```
 
